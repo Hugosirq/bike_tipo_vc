@@ -1,0 +1,22 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+    - Gemfile
+    - Gemfile.lock
+    - Rakefile
+    - bin/*
+Documentation:
+  Enabled: false
+Layout/DotPosition:
+  EnforcedStyle: trailing
+Style/GuardClause:
+  MinBodyLength: 3
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+Naming/UncommunicativeMethodParamName:
+  AllowedNames: [io, id, to, _]
