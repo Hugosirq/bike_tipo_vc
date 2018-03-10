@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310151727) do
+ActiveRecord::Schema.define(version: 20180310201746) do
+
+  create_table "bikes", force: :cascade do |t|
+    t.string "code", null: false
+    t.integer "condition_cd", null: false
+    t.string "locable_type", null: false
+    t.integer "locable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stations", force: :cascade do |t|
     t.string "description", null: false

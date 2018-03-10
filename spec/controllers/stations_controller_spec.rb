@@ -13,6 +13,7 @@ describe StationsController, type: :controller do
     before { get :index }
 
     it_behaves_like 'a successful get method'
+    it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
   end
 
@@ -22,6 +23,7 @@ describe StationsController, type: :controller do
     end
 
     it_behaves_like 'a successful get method'
+    it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
   end
 
@@ -34,6 +36,7 @@ describe StationsController, type: :controller do
       end
 
       it_behaves_like 'a successful get method'
+      it_behaves_like 'a json api response with all relations of', Station
       it_behaves_like 'a get with jsonapi with default value of', Station
     end
 
@@ -52,12 +55,12 @@ describe StationsController, type: :controller do
 
   describe '#update' do
     let(:station) { create(:station) }
-    let(:new_name) { 'Youse 2.0' }
+    let(:new_description) { 'Youse 2.0' }
     let(:params) do
       {
         id: station.id,
         station: {
-          description: new_name
+          description: new_description
         }
       }
     end
@@ -65,10 +68,11 @@ describe StationsController, type: :controller do
     before { post :update, params: params }
 
     it_behaves_like 'a successful get method'
+    it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
 
     it 'updates' do
-      expect(data['attributes']['description']).to eq(new_name)
+      expect(data['attributes']['description']).to eq(new_description)
     end
   end
 
@@ -83,6 +87,7 @@ describe StationsController, type: :controller do
     before { delete :destroy, params: params }
 
     it_behaves_like 'a successful get method'
+    it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
   end
 end
