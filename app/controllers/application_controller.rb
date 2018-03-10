@@ -12,7 +12,6 @@ class ApplicationController < ActionController::API
       renderization =
         { jsonapi: object, include: includes_params }.merge(options)
       render build_meta_data(object).merge(renderization)
-      # render renderization
     end
   end
 
@@ -25,10 +24,6 @@ class ApplicationController < ActionController::API
       model_name.reflect_on_all_associations(:has_one).map(&:name)
     model_relationships +=
       model_name.reflect_on_all_associations(:has_many).map(&:name)
-
-    # This line exists to exclude from default_includes_params a relationship
-    # with 'versions' (see gem paper_trail)
-    model_relationships.delete(:versions)
 
     params.merge!(includes: model_relationships)
   end
