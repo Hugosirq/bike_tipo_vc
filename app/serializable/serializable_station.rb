@@ -7,4 +7,6 @@ class SerializableStation < JSONAPI::Serializable::Resource
 
   attribute(:created_at) { I18n.l(@object.created_at, format: :timestamp) }
   attribute(:updated_at) { I18n.l(@object.updated_at, format: :timestamp) }
+
+  has_many :bikes
 end

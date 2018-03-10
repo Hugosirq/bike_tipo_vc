@@ -13,6 +13,7 @@ describe StationsController, type: :controller do
     before { get :index }
 
     it_behaves_like 'a successful get method'
+    it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
   end
 

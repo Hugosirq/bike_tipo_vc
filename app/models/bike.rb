@@ -5,4 +5,5 @@ class Bike < ApplicationRecord
   validates :locable_id, numericality: { only_integer: true }
 
   as_enum :condition, %i[broken available], prefix: true
+  belongs_to :locable, polymorphic: true
 end

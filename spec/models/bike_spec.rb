@@ -4,7 +4,8 @@ require 'rails_helper'
 
 describe Bike, type: :model do
   describe 'validations' do
-    subject { create(:bike) }
+    let(:station) { create(:station) }
+    subject { create(:bike, locable: station) }
 
     context 'when creating' do
       it { expect(subject).to be_valid }
