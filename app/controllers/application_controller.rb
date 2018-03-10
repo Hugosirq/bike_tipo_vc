@@ -5,13 +5,13 @@ class ApplicationController < ActionController::API
               with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  def render_object(object, options = {})
+  def render_object(object)
     if object.respond_to?(:errors) && object.errors.any?
-      render({ jsonapi_errors: object.errors }.merge(options))
+      render(jsonapi_errors: object.errors)
     else
       renderization =
-        { jsonapi: object, include: includes_params }.merge(options)
-      render build_meta_data(object).merge(renderization)
+        { jsonapi: object, include: includes_params }
+      render renderization
     end
   end
 
