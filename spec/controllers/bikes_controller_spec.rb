@@ -33,8 +33,8 @@ describe BikesController, type: :controller do
 
     context 'with valid values' do
       let(:params) do
-        { bike: attributes_for(:bike).merge({ locable_id: station.id,
-                                              locable_type: :Station }) }
+        { bike: attributes_for(:bike).merge(locable_id: station.id,
+                                            locable_type: :Station) }
       end
 
       it_behaves_like 'a successful get method'
