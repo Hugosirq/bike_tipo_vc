@@ -124,9 +124,6 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
-    paper_trail (8.1.2)
-      activerecord (>= 4.2, < 5.2)
-      request_store (~> 1.1)
     parallel (1.12.1)
     parser (2.5.0.3)
       ast (~> 2.4.0)
@@ -262,7 +259,6 @@ DEPENDENCIES
   json-api-vanilla (~> 1.0.1)
   jsonapi-rails (~> 0.3.1)
   listen
-  paper_trail (~> 8.1)
   pry
   pry-byebug
   pry-highlight

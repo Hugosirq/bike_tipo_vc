@@ -2,6 +2,12 @@
 
 require 'spec_helper'
 
+RSpec.shared_examples 'a http method' do
+  it 'returns http success' do
+    expect(response).to have_http_status(:success)
+  end
+end
+
 RSpec.shared_examples 'a successful get method' do
   it_behaves_like 'a http method'
 
@@ -15,10 +21,10 @@ RSpec.shared_examples 'a get with jsonapi with default value of' do |model|
   let(:model_keys) do
     enums = []
     model.new.attributes.keys.map do |attr|
-      if attr.match?(/_cd$/)
+      if /_cd$/.match?(attr)
         enums << attr
         attr.gsub(/_cd/, '')
-      elsif attr.match?(/_id$|^id$/)
+      elsif /_id$|^id$/.match?(attr)
         nil
       else
         attr

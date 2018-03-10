@@ -13,10 +13,4 @@ describe Station, type: :model do
       it { should validate_numericality_of(:max_lotation).only_integer }
     end
   end
-
-  describe 'version' do
-    context 'when PaperTrail is related with Station' do
-      it { is_expected.to be_versioned }
-    end
-  end
 end
