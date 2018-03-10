@@ -30,6 +30,8 @@ group :development, :test do
   gem 'rails_best_practices'
   gem 'rubocop'
   gem 'brakeman'
+  gem 'listen'
+
 end
 
 group :test do
