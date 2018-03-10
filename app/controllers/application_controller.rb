@@ -5,23 +5,41 @@ class ApplicationController < ActionController::API
               with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  def render_with(json)
-    return json_paginate(json) if json.is_a?(ActiveRecord::Relation)
-    render jsonapi: json, include: includes_params,
-           content_type: 'application/vnd.api+json; charset=utf-8'
-  end
-
-  def json_paginate(json)
-    json = json.paginate(page: params[:page], per_page: params[:per_page])
-    render_object(json, links: pagination(json), meta: pagination_meta(json))
-  end
-
-  def render_with_errors(json)
-    render json: json, status: :unprocessable_entity
+  def render_object(object, options = {})
+    if object.respond_to?(:errors) && object.errors.any?
+      render({ jsonapi_errors: object.errors }.merge(options))
+    else
+      renderization =
+        { jsonapi: object, include: includes_params }.merge(options)
+      render build_meta_data(object).merge(renderization)
+    end
   end
 
   def includes_params
-    params.as_json.fetch('includes', {})
+    params.fetch(:includes, {})
+  end
+
+  def default_includes_params
+    model_relationships =
+      model_name.reflect_on_all_associations(:has_one).map(&:name)
+    model_relationships +=
+      model_name.reflect_on_all_associations(:has_many).map(&:name)
+
+    params.merge!(includes: model_relationships)
+  end
+
+  private
+
+  def model_name
+    controller_name.singularize.camelize.constantize
+  end
+
+  def build_meta_data(objects)
+    if objects.respond_to?(:count)
+      { meta: { 'total-count' => objects.count } }
+    else
+      {}
+    end
   end
 
   def render_unprocessable_entity_response(exception)

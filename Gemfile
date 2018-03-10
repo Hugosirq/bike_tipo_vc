@@ -17,7 +17,6 @@ gem 'jsonapi-rails',                  '~> 0.3.1'
 gem 'json',                           '>= 2.0.0'
 gem 'json-api-vanilla',               '~> 1.0.1'
 gem 'request_store',                  '~> 1.3.2'
-gem 'paper_trail',                    '~> 8.1'
 
 group :development, :test do
   gem 'pry'
@@ -30,6 +29,8 @@ group :development, :test do
   gem 'rails_best_practices'
   gem 'rubocop'
   gem 'brakeman'
+  gem 'listen'
+
 end
 
 group :test do
