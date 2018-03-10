@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Station, type: :model do
+describe User, type: :model do
   describe 'validations' do
     subject { create(:user) }
 
