@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+  before_action :set_paper_trail_whodunnit
   rescue_from ActiveRecord::RecordInvalid,
               with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
@@ -38,5 +39,9 @@ class ApplicationController < ActionController::API
     }
 
     render json: response, status: :not_found
+  end
+
+  def current_user
+    @current_user ||= :me
   end
 end
