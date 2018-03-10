@@ -24,7 +24,7 @@ RSpec.shared_examples 'a get with jsonapi with default value of' do |model|
       if /_cd$/.match?(attr)
         enums << attr
         attr.gsub(/_cd/, '')
-      elsif /_id$|^id$/.match?(attr)
+      elsif /^id$/.match?(attr)
         nil
       else
         attr
