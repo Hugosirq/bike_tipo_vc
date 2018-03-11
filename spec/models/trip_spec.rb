@@ -52,8 +52,23 @@ describe Trip, type: :model do
       end
 
       context 'and all ending attributes are present' do
-        let(:final_station) { create(:station) }
-        it { expect(subject).to be_valid }
+        context 'and are correct' do
+          let(:final_station) { create(:station) }
+          it { expect(subject).to be_valid }
+        end
+
+        context 'and are incorrect' do
+          let(:final_station) { origin_station }
+          let(:error_message) do
+            I18n.t('activerecord.errors.models.trip.attributes.final_station.' \
+              'invalid_final_station')
+          end
+
+          it do
+            expect { subject }.
+              to raise_error(ActiveRecord::RecordInvalid, /#{error_message}/)
+          end
+        end
       end
 
       context 'and all ending attributes are not present' do

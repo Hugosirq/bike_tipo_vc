@@ -11,5 +11,7 @@ en:
           attributes:
             base:
               missing_ending_fields: 'Missing attributes for ending a Trip'
+            final_station:
+              invalid_final_station: 'Invalid final station'
             bike:
               broken_bike: 'Bike is broken'

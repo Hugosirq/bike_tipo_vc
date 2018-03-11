@@ -23,6 +23,10 @@ class Trip < ApplicationRecord
     if ending_trip_fields.size > ending_trip_fields.compact.size
       errors.add(:base, :missing_ending_fields)
     end
+
+    if final_station.present? && invalid_final_station?
+      errors.add(:final_station, :invalid_final_station)
+    end
   end
 
   def bike_condition
@@ -30,6 +34,10 @@ class Trip < ApplicationRecord
   end
 
   private
+
+  def invalid_final_station?
+    origin_station == final_station
+  end
 
   def ending_trip_fields
     [final_station_id, end_date, extra_minutes, pricing, meters_distance]
