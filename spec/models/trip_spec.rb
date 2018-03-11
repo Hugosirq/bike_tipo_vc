@@ -17,9 +17,33 @@ describe Trip, type: :model do
       it { should validate_presence_of(:origin_station_id) }
       it { should validate_presence_of(:bike_id) }
       it { should validate_presence_of(:start_date) }
+
+      context 'validates bike condition' do
+        context 'when bike is broken' do
+          let(:error_message) do
+            I18n.t('activerecord.errors.models.trip.attributes.bike.' \
+              'broken_bike')
+          end
+          let(:bike) do
+            create(:bike, condition: :broken, locable: origin_station)
+          end
+
+          it do
+            expect { subject }.
+              to raise_error(ActiveRecord::RecordInvalid, /#{error_message}/)
+          end
+        end
+
+        context 'when bike is available' do
+          let(:bike) do
+            create(:bike, condition: :available, locable: origin_station)
+          end
+          it { expect(subject).to be_valid }
+        end
+      end
     end
 
-    context 'when ending a tip' do
+    context 'when ending a trip' do
       subject do
         create(:trip, origin_station: origin_station, pricing: 1.00,
                       bike: bike, meters_distance: 100.00, extra_minutes: 60,
@@ -42,6 +66,18 @@ describe Trip, type: :model do
         it do
           expect { subject }.
             to raise_error(ActiveRecord::RecordInvalid, /#{error_message}/)
+        end
+      end
+
+      context 'and not validates bike condition' do
+        let(:final_station) { create(:station) }
+
+        context 'when bike is broken' do
+          it { expect(subject).to be_valid }
+        end
+
+        context 'when bike is available' do
+          it { expect(subject).to be_valid }
         end
       end
     end
