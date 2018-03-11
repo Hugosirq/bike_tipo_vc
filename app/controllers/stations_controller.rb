@@ -33,6 +33,6 @@ class StationsController < ApplicationController
 
   def station_params
     params.require(:station).
-      permit(:description, :address, :neighborhood, :max_lotation)
+      permit(:description, :address, :neighborhood, :max_capacity)
   end
 end

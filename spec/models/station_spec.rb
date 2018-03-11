@@ -9,8 +9,8 @@ describe Station, type: :model do
     context 'when creating' do
       it { expect(subject).to be_valid }
       it { should validate_presence_of(:description) }
-      it { should validate_presence_of(:max_lotation) }
-      it { should validate_numericality_of(:max_lotation).only_integer }
+      it { should validate_presence_of(:max_capacity) }
+      it { should validate_numericality_of(:max_capacity).only_integer }
     end
   end
 end
