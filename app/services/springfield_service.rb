@@ -6,6 +6,6 @@ class SpringfieldService < ServiceApplication
   end
 
   def self.create_tip(params)
-    post(url: "/trips", params)
+    post(url: '/trips', params: params)
   end
 end

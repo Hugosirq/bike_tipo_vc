@@ -5,5 +5,4 @@ class ServiceApplication
     return nil unless url
     RestClient.post(url, params, headers: headers)
   end
-
 end

@@ -11,5 +11,3 @@ class TripEntity
     ATTRS.each { |key| instance_variable_set("@#{key}", attrs[key]) }
   end
 end
-
-
