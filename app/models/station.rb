@@ -9,7 +9,6 @@ class Station < ApplicationRecord
                    primary_key: 'id',
                    foreign_key: 'origin_station_id'
   has_many :trips, class_name: 'Trip',
-                       primary_key: 'id',
-                       foreign_key: 'final_station_id'
-
+                   primary_key: 'id',
+                   foreign_key: 'final_station_id'
 end
