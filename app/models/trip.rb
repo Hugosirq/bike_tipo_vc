@@ -13,6 +13,8 @@ class Trip < ApplicationRecord
 
   validate :ending_a_trip, if: 'any_ending_trip_fields_present?'
 
+  validate :bike_condition, on: :create
+
   def any_ending_trip_fields_present?
     ending_trip_fields.compact.size.positive?
   end
@@ -21,6 +23,10 @@ class Trip < ApplicationRecord
     if ending_trip_fields.size > ending_trip_fields.compact.size
       errors.add(:base, :missing_ending_fields)
     end
+  end
+
+  def bike_condition
+    errors.add(:bike, :broken_bike) if bike&.condition_broken?
   end
 
   private
