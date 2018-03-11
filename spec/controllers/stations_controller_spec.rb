@@ -2,6 +2,11 @@
 
 require 'rails_helper'
 
+RSpec.shared_examples 'includes abstract attributes' do
+  let(:attributes) { data['attributes'].keys }
+  it { expect(attributes).to include('available_bikes', 'free_spots') }
+end
+
 describe StationsController, type: :controller do
   let!(:station) { create(:station) }
 
@@ -15,6 +20,7 @@ describe StationsController, type: :controller do
     it_behaves_like 'a successful get method'
     it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
+    it_behaves_like 'includes abstract attributes'
   end
 
   describe '#show' do
@@ -25,6 +31,7 @@ describe StationsController, type: :controller do
     it_behaves_like 'a successful get method'
     it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
+    it_behaves_like 'includes abstract attributes'
   end
 
   describe '#create' do
@@ -38,6 +45,7 @@ describe StationsController, type: :controller do
       it_behaves_like 'a successful get method'
       it_behaves_like 'a json api response with all relations of', Station
       it_behaves_like 'a get with jsonapi with default value of', Station
+      it_behaves_like 'includes abstract attributes'
     end
 
     context 'with invalid values' do
@@ -70,6 +78,7 @@ describe StationsController, type: :controller do
     it_behaves_like 'a successful get method'
     it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
+    it_behaves_like 'includes abstract attributes'
 
     it 'updates' do
       expect(data['attributes']['description']).to eq(new_description)
@@ -89,5 +98,6 @@ describe StationsController, type: :controller do
     it_behaves_like 'a successful get method'
     it_behaves_like 'a json api response with all relations of', Station
     it_behaves_like 'a get with jsonapi with default value of', Station
+    it_behaves_like 'includes abstract attributes'
   end
 end

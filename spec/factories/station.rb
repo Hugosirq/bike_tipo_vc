@@ -5,6 +5,6 @@ FactoryBot.define do
     description 'Estação Youse'
     address 'Av. Brg. Faria Lima, 4285'
     neighborhood 'Itaim Bibi'
-    max_lotation 100
+    max_capacity 100
   end
 end

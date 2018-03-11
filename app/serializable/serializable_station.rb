@@ -3,11 +3,12 @@
 class SerializableStation < JSONAPI::Serializable::Resource
   type :stations
 
-  attributes :description, :address, :neighborhood, :max_lotation
+  attributes :description, :address, :neighborhood, :max_capacity
 
   attribute(:created_at) { I18n.l(@object.created_at, format: :timestamp) }
   attribute(:updated_at) { I18n.l(@object.updated_at, format: :timestamp) }
-
+  attribute(:available_bikes) { @object.available_bikes }
+  attribute(:free_spots) { @object.free_spots }
   has_many :bikes, as: :locable
   has_many :trips, class_name: 'Trip',
                    primary_key: 'id',
