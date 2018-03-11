@@ -23,7 +23,7 @@ describe Trip, type: :model do
       subject do
         create(:trip, origin_station: origin_station, pricing: 1.00,
                       bike: bike, meters_distance: 100.00, extra_minutes: 60,
-                      end_date: '10/03/2018 21:25:00 +03:00'.to_time,
+                      end_date: '10/03/2018 21:25:00'.to_time,
                       final_station: final_station)
       end
 
