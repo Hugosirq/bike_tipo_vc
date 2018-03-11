@@ -20,6 +20,7 @@ class TripsController < ApplicationController
   def update
     trip = Trip.find(params[:id])
     trip.update_attributes(trip_params)
+    TripRepository.new.create(trip)
     render_object trip
   end
 

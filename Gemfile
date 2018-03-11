@@ -30,13 +30,13 @@ group :development, :test do
   gem 'rubocop'
   gem 'brakeman'
   gem 'listen'
-
 end
 
 group :test do
+  gem 'vcr'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'database_cleaner'
-  gem 'cpf_faker'
+  gem 'webmock'
 end
