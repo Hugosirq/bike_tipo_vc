@@ -3,6 +3,11 @@
 require 'rails_helper'
 
 describe TripsController, type: :controller do
+  before do
+    allow_any_instance_of(TripRepository).
+      to receive(:create).and_return(nil)
+  end
+
   let(:origin_station) { create(:station) }
   let(:bike) { create(:bike, locable: origin_station) }
   let!(:trip) { create(:trip, origin_station: origin_station, bike: bike) }

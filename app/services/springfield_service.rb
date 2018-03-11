@@ -5,7 +5,12 @@ class SpringfieldService < ServiceApplication
     ENV['SPRINGFIELD_SERVICE'].to_s
   end
 
-  def self.create_tip(params)
-    post(url: '/trips', params: params)
+  def self.header
+    { Authorization: ENV['SPRINGFIELD_SERVICE_ACCESS_TOKEN'].to_s }
   end
+
+  def self.create_trip(params)
+    post('/trips', params)
+  end
+
 end

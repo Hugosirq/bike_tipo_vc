@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://springfield-biketipovc.herokuapp.com/trips
+    body:
+      encoding: UTF-8
+      string: '{"user_id":1,"bike_id":1,"started_at":"2018-03-10 20:25:00","finished_at":"2018-03-10
+        21:25:00","traveled_distance":100.0,"origin":{"station_id":1},"destination":{"station_id":2}}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.5.0p0
+      Authorization:
+      - Bearer 729c66ea-e107-4d49-ba9e-49ddf4ff5628
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '179'
+      Host:
+      - springfield-biketipovc.herokuapp.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Sun, 11 Mar 2018 23:04:19 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/plain; charset=utf-8
+      Etag:
+      - W/"36a9e7f1c95b82ffb99743e0c5c4ce95"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 65a955b7-ef4d-49c5-acaf-c0556c7fc292
+      X-Runtime:
+      - '0.017475'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: " "
+    http_version: 
+  recorded_at: Sun, 11 Mar 2018 23:04:19 GMT
+recorded_with: VCR 4.0.0

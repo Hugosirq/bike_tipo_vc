@@ -27,8 +27,6 @@ class Trip < ApplicationRecord
     if final_station.present? && invalid_final_station?
       errors.add(:final_station, :invalid_final_station)
     end
-
-    TripRepository.create(trip) if errors.blank?
   end
 
   def bike_condition

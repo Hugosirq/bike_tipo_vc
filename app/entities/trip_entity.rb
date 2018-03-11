@@ -7,7 +7,6 @@ class TripEntity
   ATTRS.each { |item| attr_reader item }
 
   def initialize(attrs = {})
-    attrs.symbolize_keys!
     ATTRS.each { |key| instance_variable_set("@#{key}", attrs[key]) }
   end
 end
