@@ -43,7 +43,7 @@ describe Trip, type: :model do
       end
     end
 
-    context 'when ending a tip' do
+    context 'when ending a trip' do
       subject do
         create(:trip, origin_station: origin_station, pricing: 1.00,
                       bike: bike, meters_distance: 100.00, extra_minutes: 60,
@@ -54,10 +54,6 @@ describe Trip, type: :model do
       context 'and all ending attributes are present' do
         let(:final_station) { create(:station) }
         it { expect(subject).to be_valid }
-
-        it 'not validates bike condition' do
-          expect(bike.condition_broken?).to be_falsy
-        end
       end
 
       context 'and all ending attributes are not present' do
@@ -70,6 +66,18 @@ describe Trip, type: :model do
         it do
           expect { subject }.
             to raise_error(ActiveRecord::RecordInvalid, /#{error_message}/)
+        end
+      end
+
+      context 'and not validates bike condition' do
+        let(:final_station) { create(:station) }
+
+        context 'when bike is broken' do
+          it { expect(subject).to be_valid }
+        end
+
+        context 'when bike is available' do
+          it { expect(subject).to be_valid }
         end
       end
     end
