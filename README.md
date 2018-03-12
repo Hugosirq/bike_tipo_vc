@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Framework: Rails 5.1.4
 
-Things you may want to cover:
+Padrão nas respostas: JSONAPI, para mais informações jsonapi.org.
 
-* Ruby version
+Arquitetura: Além do bem conhecido MVC, utilizei a estrutura de Entities, Repositories e Services para realizar comunicação com serviço externo. Essa estrutura segue a linha do BDD, ao tentar definir bem as camadas de acordo com seu comportamento. A camada de Entity se comporta como um Modelo de uma entidade externa, já a camada Service realize de fato a comunicação com o serviço externo e a camada Repository fica entre a Service e a Entity gerenciando a comunicação entre o nosso serviço e o serviço externo.
 
-* System dependencies
+Documentação das rotas: https://app.swaggerhub.com/apis/Hugosirq/BikeParaVc/1.0.0
 
-* Configuration
+Linters: Rubocop, Rails Best Practices, Brakeman, Simplecov.
 
-* Database creation
+Resolvi por deixar o CRUD completo exposto para que a equipe do mobile possa de fato gerenciar toda a estrutura do dado, não foi implementado nenhum tipo de autenticação visto que isso não era uma preocupação imediata nos requisitos.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
