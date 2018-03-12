@@ -1,0 +1,720 @@
+swagger: '2.0'
+info:
+  description: BikeParaVcApi documentation
+  version: 1.0.0
+  title: Bike para Vc
+  contact:
+    email: hugo_sirqueira@hotmail.com
+
+
+paths:
+  /bikes:
+    get:
+      tags:
+      - bikes
+      summary: Index
+      description: Returns all bikes resgistered
+      parameters:
+        - in: query
+          name: includes
+          description: Use to return the relationships
+          required: false
+          type: string
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Returns an array of bikes
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Bike'
+    post:
+      tags:
+      - bikes
+      summary: Create
+      description: It creates a bike
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: bike
+        required: true
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+            condition_cd:
+              type: string
+            locable_id:
+              type: string
+            locable_type:
+              type: string
+      responses:
+        201:
+          description: Returns the added bike
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Bike'
+
+  /bikes/{id}:
+    get:
+      tags:
+      - bikes
+      summary: Show
+      description: Show one bike
+      produces:
+      - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - in: query
+          name: includes
+          description: Use to return the relationships
+          required: false
+          type: string
+      responses:
+        200:
+          description: Return a bike
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Bike'
+    delete:
+      tags:
+      - bikes
+      summary: Delete
+      description: Delete one bike
+      produces:
+      - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Return the deleted bike
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Bike'
+    patch:
+      tags:
+      - bikes
+      summary: Update
+      description: It updates an bike
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Bike ID
+        required: true
+        type: integer
+      - in: body
+        name: bike
+        required: true
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+            condition_cd:
+              type: string
+            locable_id:
+              type: string
+            locable_type:
+              type: string
+      responses:
+        200:
+          description: Returns the updated bike
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Bike'
+  /stations:
+    get:
+      tags:
+      - stations
+      summary: Index
+      description: Returns all stations resgistered
+      parameters:
+        - in: query
+          name: includes
+          description: Use to return the relationships
+          required: false
+          type: string
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Returns an array of stations
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Station'
+    post:
+      tags:
+      - stations
+      summary: Create
+      description: It creates a station
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: station
+        required: true
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+            condition_cd:
+              type: string
+            locable_id:
+              type: string
+            locable_type:
+              type: string
+      responses:
+        201:
+          description: Returns the added station
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Station'
+
+  /stations/{id}:
+    get:
+      tags:
+      - stations
+      summary: Show
+      description: Show one station
+      produces:
+      - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - in: query
+          name: includes
+          description: Use to return the relationships
+          required: false
+          type: string
+      responses:
+        200:
+          description: Return a station
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Station'
+    delete:
+      tags:
+      - stations
+      summary: Delete
+      description: Delete one station
+      produces:
+      - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Return the deleted station
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Station'
+    patch:
+      tags:
+      - stations
+      summary: Update
+      description: It updates an station
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: station ID
+        required: true
+        type: integer
+      - in: body
+        name: station
+        required: true
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+            condition_cd:
+              type: string
+            locable_id:
+              type: string
+            locable_type:
+              type: string
+      responses:
+        200:
+          description: Returns the updated station
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Station'
+  /users:
+    get:
+      tags:
+      - users
+      summary: Index
+      description: Returns all users resgistered
+      parameters:
+        - in: query
+          name: includes
+          description: Use to return the relationships
+          required: false
+          type: string
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Returns an array of users
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/User'
+    post:
+      tags:
+      - users
+      summary: Create
+      description: It creates a user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: user
+        required: true
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+            condition_cd:
+              type: string
+            locable_id:
+              type: string
+            locable_type:
+              type: string
+      responses:
+        201:
+          description: Returns the added user
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/User'
+
+  /users/{id}:
+    get:
+      tags:
+      - users
+      summary: Show
+      description: Show one user
+      produces:
+      - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - in: query
+          name: includes
+          description: Use to return the relationships
+          required: false
+          type: string
+      responses:
+        200:
+          description: Return a user
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/User'
+    delete:
+      tags:
+      - users
+      summary: Delete
+      description: Delete one user
+      produces:
+      - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Return the deleted user
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/User'
+    patch:
+      tags:
+      - users
+      summary: Update
+      description: It updates an user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: user ID
+        required: true
+        type: integer
+      - in: body
+        name: user
+        required: true
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+            condition_cd:
+              type: string
+            locable_id:
+              type: string
+            locable_type:
+              type: string
+      responses:
+        200:
+          description: Returns the updated user
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/User'
+  /trips:
+    get:
+      tags:
+      - trips
+      summary: Index
+      description: Returns all trips resgistered
+      parameters:
+        - in: query
+          name: includes
+          description: Use to return the relationships
+          required: false
+          type: string
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Returns an array of trips
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Trip'
+    post:
+      tags:
+      - trips
+      summary: Create
+      description: It creates a trip
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: trip
+        required: true
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+            condition_cd:
+              type: string
+            locable_id:
+              type: string
+            locable_type:
+              type: string
+      responses:
+        201:
+          description: Returns the added trip
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Trip'
+
+  /trips/{id}:
+    get:
+      tags:
+      - trips
+      summary: Show
+      description: Show one trip
+      produces:
+      - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - in: query
+          name: includes
+          description: Use to return the relationships
+          required: false
+          type: string
+      responses:
+        200:
+          description: Return a trip
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Trip'
+    delete:
+      tags:
+      - trips
+      summary: Delete
+      description: Delete one trip
+      produces:
+      - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Return the deleted trip
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Trip'
+    patch:
+      tags:
+      - trips
+      summary: Update
+      description: It updates an trip
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: trip ID
+        required: true
+        type: integer
+      - in: body
+        name: trip
+        required: true
+        schema:
+          type: object
+          properties:
+            code:
+              type: string
+            condition_cd:
+              type: string
+            locable_id:
+              type: string
+            locable_type:
+              type: string
+      responses:
+        200:
+          description: Returns the updated trip
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Trip'
+
+
+definitions:
+  Bike:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: uniq identificator
+      type:
+        type: string
+        description: object type
+      attributes:
+        type: object
+        properties:
+          code:
+            type: string
+            example: b-001
+          locable_type:
+            type: string
+            example: station or trip
+          locable_id:
+            type: integer
+            format: int64
+          condition:
+            type: string
+            description: bike condition
+            enum:
+            - available
+            - broken
+          condition_cd:
+            type: integer
+            description: bike condition code
+            format: int64
+          created_at:
+            type: string
+          updated_at:
+            type: string
+  Station:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: uniq identificator
+      type:
+        type: string
+        description: object type
+      attributes:
+        type: object
+        properties:
+          code:
+            type: string
+            example: b-001
+          description:
+            type: string
+            example: 'Station-001'
+          address:
+            type: string
+            example: 'Rua Pedro, 10'
+          neighborhood:
+            type: string
+            example: 'Jardim Bela Vista'
+          max_capacity:
+            type: integer
+            description: full capacity
+            format: int64
+          created_at:
+            type: string
+          updated_at:
+            type: string
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: uniq identificator
+      type:
+        type: string
+        description: object type
+      attributes:
+        type: object
+        properties:
+          name:
+            type: string
+            example: 'Vitor Vidotto'
+          created_at:
+            type: string
+          updated_at:
+            type: string
+  Trip:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: uniq identificator
+      type:
+        type: string
+        description: object type
+      attributes:
+        type: object
+        properties:
+          user_id:
+            type: integer
+            description: user who is on the trip
+            format: int64
+          origin_station_id:
+            type: integer
+            description: station where started the trip
+            format: int64
+          final_station_id:
+            type: integer
+            description: station where ended the trip
+            format: int64
+          bike_id:
+            type: integer
+            description: bike used in the trip
+            format: int64
+          meters_distance:
+            type: integer
+            description: distance in meters
+          start_date:
+            type: string
+            description: when started the trip
+          end_date:
+            type: string
+            description: when ended the trip
+          created_at:
+            type: string
+          updated_at:
+            type: string
+basePath: /Hugosirq/BikeParaVc/1.0.0
+schemes:
+ - https
+ - http
