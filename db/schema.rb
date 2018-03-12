@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311191236) do
+ActiveRecord::Schema.define(version: 20180312003124) do
 
   create_table "bikes", force: :cascade do |t|
     t.string "code", null: false
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20180311191236) do
     t.integer "locable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["locable_id"], name: "index_bikes_on_locable_id"
+    t.index ["locable_type"], name: "index_bikes_on_locable_type"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -42,6 +44,10 @@ ActiveRecord::Schema.define(version: 20180311191236) do
     t.decimal "pricing", precision: 4, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_trips_on_bike_id"
+    t.index ["final_station_id"], name: "index_trips_on_final_station_id"
+    t.index ["origin_station_id"], name: "index_trips_on_origin_station_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
