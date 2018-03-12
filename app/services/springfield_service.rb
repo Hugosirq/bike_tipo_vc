@@ -12,5 +12,4 @@ class SpringfieldService < ServiceApplication
   def self.create_trip(params)
     post('/trips', params)
   end
-
 end
