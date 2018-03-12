@@ -1,3 +1,22 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack
+  revision: 1faf48b3288f265e34a34243c5172cd2a8c3539c
+  specs:
+    ransack (1.8.7)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3.2)
+
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: 4b160bd19ecca7f97d7ac22dccd5fde9b0da5a9f
+  branch: rails-5
+  specs:
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,17 +57,55 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    ast (2.4.0)
+    brakeman (4.2.0)
     builder (3.2.3)
     byebug (10.0.0)
+    code_analyzer (0.4.8)
+      sexp_processor
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.3)
+    database_cleaner (1.6.2)
+    diff-lcs (1.3)
+    docile (1.1.5)
+    domain_name (0.5.20170404)
+      unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
+    erubis (2.7.0)
+    factory_bot (4.8.2)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
+      railties (>= 3.0.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hashdiff (0.3.7)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    json (2.1.0)
+    json-api-vanilla (1.0.1)
+    jsonapi-deserializable (0.2.0)
+    jsonapi-parser (0.1.1)
+    jsonapi-rails (0.3.1)
+      jsonapi-parser (~> 0.1.0)
+      jsonapi-rb (~> 0.5.0)
+    jsonapi-rb (0.5.0)
+      jsonapi-deserializable (~> 0.2.0)
+      jsonapi-serializable (~> 0.3.0)
+    jsonapi-renderer (0.2.0)
+    jsonapi-serializable (0.3.0)
+      jsonapi-renderer (~> 0.2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -59,14 +116,39 @@ GEM
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     method_source (0.9.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    netrc (0.11.0)
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    parallel (1.12.1)
+    parser (2.5.0.3)
+      ast (~> 2.4.0)
+    polyamorous (1.3.3)
+      activerecord (>= 3.0)
+    powerpack (0.1.1)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
+      pry (~> 0.10)
+    pry-highlight (0.1.0)
+      coderay
+      json
+      nokogiri
+      pry
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
+    public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
+    rack-cors (1.0.2)
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.1.5)
@@ -86,22 +168,66 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_best_practices (1.19.1)
+      activesupport
+      code_analyzer (>= 0.4.8)
+      erubis
+      i18n
+      json
+      require_all (~> 1.5.0)
+      ruby-progressbar
     railties (5.1.5)
       actionpack (= 5.1.5)
       activesupport (= 5.1.5)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    request_store (1.3.2)
+    require_all (1.5.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-rails (3.7.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
+    rubocop (0.53.0)
+      parallel (~> 1.10)
+      parser (>= 2.5)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
-    spring (2.0.2)
-      activesupport (>= 4.2)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
+    safe_yaml (1.0.4)
+    sexp_processor (4.10.1)
+    simple_enum (2.3.0)
+      activesupport (>= 4.0.0)
+    simplecov (0.15.1)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -114,22 +240,53 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
+    unicode-display_width (1.3.0)
+    vcr (4.0.0)
+    webmock (3.3.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    will_paginate (3.1.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  brakeman
   byebug
-  listen (>= 3.0.5, < 3.2)
+  database_cleaner
+  factory_bot_rails
+  faker
+  json (>= 2.0.0)
+  json-api-vanilla (~> 1.0.1)
+  jsonapi-rails (~> 0.3.1)
+  listen
+  pry
+  pry-byebug
+  pry-highlight
+  pry-rails
   puma (~> 3.7)
+  rack-cors
   rails (~> 5.1.4)
-  spring
-  spring-watcher-listen (~> 2.0.0)
-  sqlite3
-  tzinfo-data
+  rails_best_practices
+  ransack!
+  request_store (~> 1.3.2)
+  rest-client
+  rspec-rails
+  rubocop
+  shoulda-matchers!
+  simple_enum (~> 2.3.0)
+  simplecov
+  sqlite3 (~> 1.3.13)
+  vcr
+  webmock
+  will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.14.6
+   1.16.1

@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :stations, only: [:index, :create, :update, :destroy, :show]
+  resources :bikes, only: [:index, :create, :update, :destroy, :show]
+  resources :users, only: [:index, :create, :update, :destroy, :show]
+  resources :trips, only: [:index, :create, :update, :destroy, :show]
 end

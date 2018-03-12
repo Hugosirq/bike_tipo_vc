@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+describe Bike, type: :model do
+  describe 'validations' do
+    let(:station) { create(:station) }
+    subject { create(:bike, locable: station) }
+
+    context 'when creating' do
+      it { expect(subject).to be_valid }
+      it { should validate_presence_of(:code) }
+      it { should validate_presence_of(:condition_cd) }
+      it { should validate_presence_of(:locable_type) }
+      it { should validate_presence_of(:locable_id) }
+      it { should validate_numericality_of(:locable_id).only_integer }
+    end
+  end
+end
